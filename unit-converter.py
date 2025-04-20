@@ -77,16 +77,17 @@ with to_col:
 
 value = st.number_input(f"Enter {from_unit} value", step=0.01)
 
-# --- RESULT DISPLAY ---
-st.markdown("### 🎯 Conversion Result")
-
-if from_unit == to_unit:
-    st.warning("Please choose different units for conversion.")
-elif value == 0:
-    st.info("Enter a value above zero to convert.")
-else:
-    result = convert(value, from_unit, to_unit, unit_group)
-    st.success(f"{value} {from_unit} = **{round(result, 3)} {to_unit}**")
+# --- CONVERT BUTTON ---
+if st.button("🔄 Convert"):
+    st.markdown("### 🎯 Conversion Result")
+    
+    if from_unit == to_unit:
+        st.warning("Please choose different units for conversion.")
+    elif value == 0:
+        st.info("Enter a value above zero to convert.")
+    else:
+        result = convert(value, from_unit, to_unit, unit_group)
+        st.success(f"{value} {from_unit} = **{round(result, 3)} {to_unit}**")
 
 # --- FOOTER ---
 st.divider()
